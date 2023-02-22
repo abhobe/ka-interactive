@@ -11,7 +11,6 @@ let func = p =>  {
 		for (let i=0; i<p.width; i++) {
 			p.stroke(p.color('black'));
 			p.line(i,o(f(s(i))),i-1,o(f(s(i-1))));
-			console.log('i',i, 'o(f(s(i)))', o(f(s(i))))
 		} 
 		
 		checkbox = p.createCheckbox('Pause', false);
@@ -25,12 +24,19 @@ let func = p =>  {
 		for (let i=0; i<p.width; i++) {
 			p.stroke(p.color('black'));
 			p.line(i,o(f(s(i))),i-1,o(f(s(i-1))));
-			
 		} 
 		   
 		p.ellipse(j, o(f(s(j))), 5, 5);
-		p.line(0, o(t(s(0))), p.width, o(f(s(p.width))));
-		//console.log('j:', j, 'o(t(0)):', )
+		p.line(0, o(t(s(0),s(j))), p.width, o(t(s(p.width),s(j))));
+
+		//Log Functions
+		p.text('x: '+ j, 300, 30)
+		p.text('s(x): '+ s(j), 300, 40)
+		p.text('f(s(x)): '+ f(s(j)), 300, 50)
+		p.text('d(s(x)): '+ d(s(j)), 300, 60)
+		p.text('t(s(x)): '+ t(s(j),s(0)), 300, 70)
+
+	
 		if (!checkbox.checked()) { 
 			j+=1;
 			if (j>=p.width) {
@@ -61,9 +67,9 @@ let func = p =>  {
 		     
 	}
 
-	//Tangent Generator
-	function t(x) {
-		return d(j)*(x-j)+f(j)
+	//Tangent Generator for point a
+	function t(x,a) {
+		return d(a)*(x-a)+f(a)
 	}
 }
 
