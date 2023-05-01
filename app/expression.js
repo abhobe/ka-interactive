@@ -31,6 +31,27 @@ function eval(eq,x) {
 
 }	
 
+function parse(inp, n) {
+
+    let ret = []
+    for (i = n; i < inp.length; i++) {
+        console.log(inp[i])
+        if (inp[i] == ',') {
+            continue;
+        }
+        if (inp[i] == '(') {
+            ret.push(parse(inp,i+1))
+        } else if (inp[i] == ')') {
+            return ret;
+        } else {
+            ret.push(inp[i])
+        }
+    }
+    
+    return ret;
+}
+
+
 class Expression {
     constructor(exp) {
         this.exp = exp
