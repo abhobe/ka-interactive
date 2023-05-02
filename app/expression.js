@@ -58,3 +58,24 @@ class Expression {
         this.eval = x => eval(this.exp, x)
     }
 }
+
+
+function dP(a) {
+    ret = []
+    for (i = 1; i < a.length; i++) {
+        ret.push(i*a[i])
+    }
+    return ret
+}
+
+
+function a2f(a) {
+    return x => {
+        ret = 0
+        for (i = 0; i < a.length; i++) {
+            ret += a[i]*(x**i)
+        }
+
+        return ret
+    }
+}

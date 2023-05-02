@@ -80,12 +80,13 @@ function genFunc(f, d, scale) {
 
 }
 
-let sc = 10;
-let func = genFunc(x => x**3+2*x**2, x => 3*x**2+4*x,sc )
+let sc = 100;
+let f1 = [1,2,3]
+let func = genFunc(a2f(f1), a2f(dP(f1)),sc )
 
-let deriv = genFunc(x => 3*x**2+4*x, x => 6*x+4, sc)
-let d2 = genFunc(x => 6*x+4, x=> NaN,sc)
+/*let deriv = genFunc(x => 3*x**2+4*x, x => 6*x+4, sc)
+let d2 = genFunc(x => 6*x+4, x=> NaN,sc)*/
 
 new p5(func, 'function');
-new p5(deriv, 'derivative')
-new p5(d2, 'd2')
+/*new p5(deriv, 'derivative')
+new p5(d2, 'd2')*/
